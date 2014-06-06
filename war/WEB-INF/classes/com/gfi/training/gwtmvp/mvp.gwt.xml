@@ -4,5 +4,5 @@
 	<inherits name="com.google.gwt.user.User" />
 	<source path="client" />
 	<source path="shared" />
-	<entry-point class="com.gfi.training.gwtmvp.client.Person"></entry-point>
+	<entry-point class="com.gfi.training.gwtmvp.client.MyApp"></entry-point>
 </module>

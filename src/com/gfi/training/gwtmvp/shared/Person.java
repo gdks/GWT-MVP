@@ -12,6 +12,10 @@ public class Person {
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}
+	
+	public String getFullName() {
+		return this.firstname + " " + this.lastname;
+	}
 
 	public String getFirstname() {
 		return firstname;
