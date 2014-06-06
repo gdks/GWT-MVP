@@ -1,8 +1,11 @@
 package com.gfi.training.gwtmvp.client;
 
+import com.gfi.training.gwtmvp.client.presenters.PersonPresenter;
+import com.gfi.training.gwtmvp.client.presenters.PersonPresenter.Display;
+import com.gfi.training.gwtmvp.client.presenters.Presenter;
+import com.gfi.training.gwtmvp.client.views.PersonView;
 import com.gfi.training.gwtmvp.shared.Person;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class MyApp implements EntryPoint {
@@ -10,8 +13,8 @@ public class MyApp implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		Person me = new Person();
-		
-		Label label = new Label("Hello, my name is " + me.getFullName());
-		RootPanel.get().add(label);
+		Display view = new PersonView();
+		Presenter presenter = new PersonPresenter(me, view);
+		presenter.go(RootPanel.get());
 	}
 }

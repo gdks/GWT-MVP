@@ -14,7 +14,7 @@ public class Person {
 	}
 	
 	public String getFullName() {
-		return this.firstname + " " + this.lastname;
+		return this.getFirstname() + " " + this.getLastname();
 	}
 
 	public String getFirstname() {
