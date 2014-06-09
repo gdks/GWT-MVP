@@ -21,9 +21,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	public PlaceController getPlaceController() {
 		return placeController;
 	}
-
+	
 	@Override
 	public PersonView getPersonView() {
+		
+		// PersonView defined in com.gfi.training.gwtmvp.client.views.PersonViewImpl.java
 		return personView;
 	}
 }

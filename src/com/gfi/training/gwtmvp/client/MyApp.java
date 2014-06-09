@@ -16,7 +16,7 @@ public class MyApp implements EntryPoint {
 	
 	private Place defaultPlace = new PersonPlace("Stewart");
 	private SimplePanel appWidget = new SimplePanel();
-	private ClientFactoryImpl clientFactory = new ClientFactoryImpl();
+	private ClientFactory clientFactory = GWT.create(ClientFactory.class);
 	
 	@SuppressWarnings("deprecation")
 	@Override
