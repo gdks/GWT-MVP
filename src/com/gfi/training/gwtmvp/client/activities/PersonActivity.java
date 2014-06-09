@@ -3,6 +3,7 @@ package com.gfi.training.gwtmvp.client.activities;
 import com.gfi.training.gwtmvp.client.ClientFactory;
 import com.gfi.training.gwtmvp.client.places.PersonPlace;
 import com.gfi.training.gwtmvp.client.views.PersonView;
+import com.gfi.training.gwtmvp.shared.Person;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
@@ -15,11 +16,23 @@ public class PersonActivity extends AbstractActivity implements PersonView.Prese
 	private ClientFactory clientFactory;
 	
 	// Name of person
-	private String name;
+	private Person person;
 	
 	public PersonActivity(PersonPlace place, ClientFactory clientFactory) {
-		this.name = place.getPersonName();
+		// Find the correct Person for the Place
+		this.getPerson(place.getToken());
+		
+		// Store the ClientFactory as a member property so that we can use it to get the view or go to a new place
 		this.clientFactory = clientFactory;
+	}
+	
+	/**
+	 * Get Person object from Place token
+	 * @param token
+	 */
+	public void getPerson(String token) {
+		String[] parts = token.split(" ");
+		this.person = new Person(parts[0], parts[1]);
 	}
 	
 	/**
@@ -28,7 +41,7 @@ public class PersonActivity extends AbstractActivity implements PersonView.Prese
 	@Override
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		PersonView personView = this.clientFactory.getPersonView();
-		personView.setName(this.name);
+		personView.setName(this.person.getFullName());
 		personView.setPresenter(this);
 		containerWidget.setWidget(personView.asWidget());
 	}

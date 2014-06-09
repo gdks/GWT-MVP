@@ -38,7 +38,7 @@ public class PersonViewImpl extends Composite implements PersonView {
 	@UiHandler(value="button")
 	void onClickFullname(ClickEvent e) {
 		if(presenter != null) {
-			presenter.goTo(new PersonPlace(this.name.getText() + ", Gavin"));
+			presenter.goTo(new PersonPlace("John Smith"));
 		}
 	}
 	

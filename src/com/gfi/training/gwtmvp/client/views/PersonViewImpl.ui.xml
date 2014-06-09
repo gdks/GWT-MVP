@@ -6,6 +6,6 @@
 	</ui:style>
 	<g:HTMLPanel>
 	    <g:Label ui:field="name"></g:Label>
-	    <g:Button ui:field="button">Full Name</g:Button>
+	    <g:Button ui:field="button">Change Person</g:Button>
 	</g:HTMLPanel>
 </ui:UiBinder> 

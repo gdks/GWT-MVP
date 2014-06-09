@@ -4,20 +4,20 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class PersonPlace extends Place {
-	private String personName;
+	private String token;
 	
 	public PersonPlace(String token) { 
-		this.personName = token; 
+		this.token = token; 
 	}
 	
-    public String getPersonName() { 
-    	return this.personName;
+    public String getToken() { 
+    	return this.token;
     }
 
     public static class Tokenizer implements PlaceTokenizer<PersonPlace> {
          @Override
          public String getToken(PersonPlace place) {
-        	 return place.getPersonName();
+        	 return place.getToken();
          }
 
          @Override

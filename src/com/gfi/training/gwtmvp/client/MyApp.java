@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 public class MyApp implements EntryPoint {
 	
-	private Place defaultPlace = new PersonPlace("Stewart");
+	private Place defaultPlace = new PersonPlace("Gavin Stewart");
 	private SimplePanel appWidget = new SimplePanel();
 	private ClientFactory clientFactory = GWT.create(ClientFactory.class);
 	
