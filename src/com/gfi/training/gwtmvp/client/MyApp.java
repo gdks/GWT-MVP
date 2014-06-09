@@ -22,15 +22,21 @@ public class MyApp implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		
+		// EventBus is a GWT SimpleEventBus created within ClientFactory
 		EventBus eventBus = clientFactory.getEventBus();
+		
+		// PlaceController is a GWT PlaceController created within ClientFactory but PlaceController is deprecated
 		PlaceController placeController = clientFactory.getPlaceController();
 		
 		// Start ActivityManager for the main widget with our ActivityMapper
+		// A way to map each Place to some Activity and used to automatically route app to an Activity
+		// Activity implements presenter so an Activity is a Presenter
 		ActivityMapper activityMapper = new AppActivityMapper(clientFactory);
 		ActivityManager activityManager = new ActivityManager(activityMapper, eventBus);
 		activityManager.setDisplay(this.appWidget);
 		
 		// Start PlaceHistoryHandler with our PlaceHistoryMapper
+		// Link between PlaceTokenizers and GWT's history mechanism
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 		historyHandler.register(placeController, eventBus, this.defaultPlace);
