@@ -1,6 +1,7 @@
 package com.gfi.training.gwtmvp.client.presenters;
 
 import com.gfi.training.gwtmvp.shared.Person;
+import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -35,6 +36,8 @@ public class PersonPresenter implements Presenter {
 		panel.add(view.asWidget());
 
 	}
+	
+	public void goTo(Place place) {}
 	
 	public void showFullName() {
 		view.setName(person.getFullName());
