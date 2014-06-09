@@ -32,7 +32,7 @@ public class PersonActivity extends AbstractActivity implements PersonView.Prese
 	 */
 	public void getPerson(String token) {
 		String[] parts = token.split(" ");
-		this.person = new Person(parts[0], parts[1]);
+		this.person = new Person(parts[0], parts[parts.length-1]);
 	}
 	
 	/**
