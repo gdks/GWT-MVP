@@ -5,23 +5,27 @@ Example of GWT project using Activities and Places
 
 **App**
 
-[Manifest](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/mvp.gwt.xml)
-[MyApp.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/MyApp.java)
+[Manifest](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/mvp.gwt.xml) - Specify's MyApp.java as the EntryPoint to the application.
+
+[MyApp.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/MyApp.java) - Implements EntryPoint defining the onModuleLoad method which will start the application.
 
 **Model**
 
   * Responsible for holding raw data
-  * No business logic
+  * This shouldn't contain any business logic.
 
 [Person.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/shared/Person.java)
 
 **View**
 
-[PersonView.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonView.java)
+ * Resonsible for displaying data
+ * Allows UiBinder to pass through UiHandler methods to the Presenter
 
-[PeronViewImpl.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonViewImpl.java)
+[PersonView.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonView.java) - Interface to define a PersonView.
 
-[PersonViewImpl.ui.xml](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonViewImpl.ui.xml)
+[PeronViewImpl.java](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonViewImpl.java) - Implementation of a PersonView. This shouldn't contain any business logic.
+
+[PersonViewImpl.ui.xml](https://github.com/gdks/GWT-MVP/blob/activitiesandplaces/src/com/gfi/training/gwtmvp/client/views/PersonViewImpl.ui.xml) - Template that can contain either HTML or GWT Widgets.
 
 **ClientFactory**
 
