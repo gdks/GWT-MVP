@@ -3,7 +3,7 @@ package com.gfi.training.gwtmvp.client.views;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.IsWidget;
 
-public interface PersonView extends IsWidget {
+public interface BoardView extends IsWidget {
 	void setName(String helloName);
 	void setPresenter(Presenter listener);
 	void clear();

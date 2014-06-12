@@ -11,12 +11,12 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
-public class PersonViewImpl extends Composite implements PersonView {
+public class BoardViewImpl extends Composite implements BoardView {
 
-	private static PersonViewImplUiBinder uiBinder = GWT
-			.create(PersonViewImplUiBinder.class);
+	private static BoardViewImplUiBinder uiBinder = GWT
+			.create(BoardViewImplUiBinder.class);
 	
-	interface PersonViewImplUiBinder extends UiBinder<Widget, PersonViewImpl> {
+	interface BoardViewImplUiBinder extends UiBinder<Widget, BoardViewImpl> {
 	}
 	
 	@UiField
@@ -26,11 +26,11 @@ public class PersonViewImpl extends Composite implements PersonView {
 	
 	private Presenter presenter;
 	
-	public PersonViewImpl() {
+	public BoardViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 	
-	public PersonViewImpl(String firstName) {
+	public BoardViewImpl(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
 		button.setText(firstName);
 	}

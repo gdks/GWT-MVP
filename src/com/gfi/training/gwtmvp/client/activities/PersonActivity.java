@@ -2,14 +2,14 @@ package com.gfi.training.gwtmvp.client.activities;
 
 import com.gfi.training.gwtmvp.client.ClientFactory;
 import com.gfi.training.gwtmvp.client.places.PersonPlace;
-import com.gfi.training.gwtmvp.client.views.PersonView;
+import com.gfi.training.gwtmvp.client.views.BoardView;
 import com.gfi.training.gwtmvp.shared.Person;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-public class PersonActivity extends AbstractActivity implements PersonView.Presenter {
+public class PersonActivity extends AbstractActivity implements BoardView.Presenter {
 	
 	// Used to obtain views, eventBus, placeController
     // Alternatively, could be injected via GIN
@@ -40,7 +40,7 @@ public class PersonActivity extends AbstractActivity implements PersonView.Prese
      */
 	@Override
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
-		PersonView personView = this.clientFactory.getPersonView();
+		BoardView personView = this.clientFactory.getPersonView();
 		personView.setName(this.person.getFullName());
 		personView.setPresenter(this);
 		containerWidget.setWidget(personView.asWidget());
