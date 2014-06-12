@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="junit-src"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
@@ -9,5 +10,6 @@
 	<classpathentry kind="lib" path="C:/Development/Shared/mockito-all-1.9.5.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Shared/slf4j-api-1.7.7.jar"/>
 	<classpathentry kind="lib" path="C:/Development/Shared/slf4j-simple-1.7.7.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
