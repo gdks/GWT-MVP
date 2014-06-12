@@ -54,7 +54,7 @@ Desktop.ini
 target
 .gwt/
 gwt-unitCache/
-war/WEB-INF/
+war/
  
 # Locally stored "Eclipse launch configurations"
 *.launch
