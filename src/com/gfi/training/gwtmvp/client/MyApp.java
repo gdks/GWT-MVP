@@ -1,6 +1,6 @@
 package com.gfi.training.gwtmvp.client;
 
-import com.gfi.training.gwtmvp.client.places.PersonPlace;
+import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
 
 public class MyApp implements EntryPoint {
 	
-	private Place defaultPlace = new PersonPlace("Gavin Stewart");
+	private Place defaultPlace = new BoardPlace("Gavin Stewart");
 	private SimplePanel appWidget = new SimplePanel();
 	private ClientFactory clientFactory = GWT.create(ClientFactory.class);
 	

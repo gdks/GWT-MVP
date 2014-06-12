@@ -14,7 +14,7 @@ public class ClientFactoryImpl implements ClientFactory {
     private final EventBus eventBus = new SimpleEventBus();
     @SuppressWarnings("deprecation")
 	private final PlaceController placeController = new PlaceController(eventBus);
-    private final BoardView personView = new BoardViewImpl();
+    private final BoardView boardView = new BoardViewImpl();
     ActivityMapper activityMapper = new AppActivityMapper(this);
 
     @Override
@@ -28,8 +28,8 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 	
 	@Override
-	public BoardView getPersonView() {
-		return this.personView;
+	public BoardView getBoardView() {
+		return this.boardView;
 	}
 
 	@Override

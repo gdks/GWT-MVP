@@ -1,7 +1,7 @@
 package com.gfi.training.gwtmvp.client;
 
-import com.gfi.training.gwtmvp.client.activities.PersonActivity;
-import com.gfi.training.gwtmvp.client.places.PersonPlace;
+import com.gfi.training.gwtmvp.client.activities.BoardActivity;
+import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
@@ -22,8 +22,8 @@ public class AppActivityMapper implements ActivityMapper {
 	 */
 	@Override
     public Activity getActivity(Place place) {
-		 if (place instanceof PersonPlace) {
-			 return new PersonActivity((PersonPlace) place, clientFactory);
+		 if (place instanceof BoardPlace) {
+			 return new BoardActivity((BoardPlace) place, clientFactory);
 		 }
 		 
 		 return null;

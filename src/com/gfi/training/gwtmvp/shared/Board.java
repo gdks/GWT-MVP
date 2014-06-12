@@ -1,14 +1,14 @@
 package com.gfi.training.gwtmvp.shared;
 
-public class Person {
+public class Board {
 	protected String firstname;
 	protected String lastname;
 	
-	public Person() {
+	public Board() {
 		this("Gavin", "Stewart");
 	}
 	
-	public Person(String firstname, String lastname) {
+	public Board(String firstname, String lastname) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 	}

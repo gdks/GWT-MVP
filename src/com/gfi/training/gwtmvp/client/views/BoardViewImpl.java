@@ -1,6 +1,6 @@
 package com.gfi.training.gwtmvp.client.views;
 
-import com.gfi.training.gwtmvp.client.places.PersonPlace;
+import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -38,7 +38,7 @@ public class BoardViewImpl extends Composite implements BoardView {
 	@UiHandler(value="button")
 	void onClickFullname(ClickEvent e) {
 		if(presenter != null) {
-			presenter.goTo(new PersonPlace("John Smith"));
+			presenter.goTo(new BoardPlace("John Smith"));
 		}
 	}
 	

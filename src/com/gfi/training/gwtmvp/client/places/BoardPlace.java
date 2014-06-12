@@ -3,10 +3,10 @@ package com.gfi.training.gwtmvp.client.places;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class PersonPlace extends Place {
+public class BoardPlace extends Place {
 	private String token;
 	
-	public PersonPlace(String token) { 
+	public BoardPlace(String token) { 
 		this.token = token; 
 	}
 	
@@ -14,15 +14,15 @@ public class PersonPlace extends Place {
     	return this.token;
     }
 
-    public static class Tokenizer implements PlaceTokenizer<PersonPlace> {
+    public static class Tokenizer implements PlaceTokenizer<BoardPlace> {
          @Override
-         public String getToken(PersonPlace place) {
+         public String getToken(BoardPlace place) {
         	 return place.getToken();
          }
 
          @Override
-         public PersonPlace getPlace(String token) {
-        	 return new PersonPlace(token);
+         public BoardPlace getPlace(String token) {
+        	 return new BoardPlace(token);
          }
     }
 }

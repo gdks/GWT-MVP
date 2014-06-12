@@ -10,7 +10,7 @@ import com.google.gwt.place.shared.PlaceHistoryHandler;
 public interface ClientFactory {
 	EventBus getEventBus();
 	PlaceController getPlaceController();
-    BoardView getPersonView();
+    BoardView getBoardView();
     ActivityManager getActivityManager();
     ActivityMapper getActivityMapper();
     PlaceHistoryHandler getPlaceHistoryHandler();

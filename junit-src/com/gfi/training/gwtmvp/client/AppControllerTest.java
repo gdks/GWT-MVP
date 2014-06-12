@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import com.gfi.training.gwtmvp.client.places.PersonPlace;
+import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.event.shared.EventBus;
@@ -30,7 +30,7 @@ public class AppControllerTest extends GwtTestWithMockito {
 	@Mock private PlaceHistoryHandler placeHistoryHandler;
 	@Mock private PlaceController placeController;
 	
-	private Place defaultPlace = new PersonPlace("Gavin Stewart");
+	private Place defaultPlace = new BoardPlace("Gavin Stewart");
 	
 	private AppController game;
 	
