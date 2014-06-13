@@ -12,19 +12,15 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
 public class BoardViewImpl extends Composite implements BoardView {
-
-	private static BoardViewImplUiBinder uiBinder = GWT
-			.create(BoardViewImplUiBinder.class);
 	
-	interface BoardViewImplUiBinder extends UiBinder<Widget, BoardViewImpl> {
-	}
+	interface BoardViewImplUiBinder extends UiBinder<Widget, BoardViewImpl> { }
 	
-	@UiField
-	Button button;
-	@UiField
-	Label name;
+	private static BoardViewImplUiBinder uiBinder = GWT.create(BoardViewImplUiBinder.class);
 	
 	private Presenter presenter;
+	
+	@UiField Button button;
+	@UiField Label name;
 	
 	public BoardViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -53,7 +49,7 @@ public class BoardViewImpl extends Composite implements BoardView {
 	}
 
 	@Override
-	public void setPresenter(Presenter presenter) {
+	public void setPresenter(final Presenter presenter) {
 		this.presenter = presenter;
 	}
 }
