@@ -12,24 +12,8 @@
 	    
 	    <g:Label ui:field="toPlay"></g:Label>
 	    
-	    <g:VerticalPanel>
-	        <g:HorizontalPanel>
-	            <g:Button ui:field="btnOne" styleName="{style.square}"></g:Button>
-	            <g:Button ui:field="btnTwo" styleName="{style.square}"></g:Button>
-	            <g:Button ui:field="btnThree" styleName="{style.square}"></g:Button>
-	        </g:HorizontalPanel>
+	    <g:VerticalPanel ui:field="squares">
 	        
-	         <g:HorizontalPanel>
-                <g:Button ui:field="btnFour" styleName="{style.square}"></g:Button>
-                <g:Button ui:field="btnFive" styleName="{style.square}"></g:Button>
-                <g:Button ui:field="btnSix" styleName="{style.square}"></g:Button>
-            </g:HorizontalPanel>
-            
-	          <g:HorizontalPanel>
-                <g:Button ui:field="btnSeven" styleName="{style.square}"></g:Button>
-                <g:Button ui:field="btnEight" styleName="{style.square}"></g:Button>
-                <g:Button ui:field="btnNine" styleName="{style.square}"></g:Button>
-            </g:HorizontalPanel>
 	    </g:VerticalPanel>
 	    
 	    <g:Button ui:field="reset">Restart Game</g:Button>

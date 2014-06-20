@@ -1,5 +1,7 @@
 package com.gfi.training.gwtmvp.client.views;
 
+import java.util.List;
+
 import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -22,15 +24,7 @@ public class BoardViewImpl extends Composite implements BoardView {
 	@UiField Button reset;
 	@UiField Label toPlay;
 	
-	@UiField Button btnOne;
-	@UiField Button btnTwo;
-	@UiField Button btnThree;
-	@UiField Button btnFour;
-	@UiField Button btnFive;
-	@UiField Button btnSix;
-	@UiField Button btnSeven;
-	@UiField Button btnEight;
-	@UiField Button btnNine;
+	List<Button> buttons;
 	
 	public BoardViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -39,6 +33,9 @@ public class BoardViewImpl extends Composite implements BoardView {
 	public BoardViewImpl(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
 		toPlay.setText(firstName);
+		
+		// instantiate button widgets
+		// add buttons to 
 	}
 
 	@UiHandler(value="reset")
