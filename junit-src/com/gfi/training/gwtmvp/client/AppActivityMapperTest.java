@@ -1,17 +1,15 @@
 package com.gfi.training.gwtmvp.client;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static org.mockito.Matchers.isA;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.gfi.training.gwtmvp.client.activities.BoardActivity;
+import com.gfi.training.gwtmvp.client.places.BoardPlace;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.place.shared.Place;
 import com.googlecode.gwt.test.GwtModule;
@@ -36,6 +34,13 @@ public class AppActivityMapperTest extends GwtTestWithMockito {
 	public void testIfGetActivityReturnsNullForANonExistantPlace() {
 		
 		Activity activity = testSubject.getActivity(mockPlace);
+		assertNull(activity);
+	}
+	
+	@Test
+	public void testIfGetActivityReturnsNullForNoPlace() {
+		
+		Activity activity = testSubject.getActivity(null);
 		assertNull(activity);
 	}
 	
