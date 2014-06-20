@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Game {
 	
-	private Board board;
-	private ArrayList<Board.Square[]> winScenarios;
+	protected Board board;
+	protected ArrayList<Board.Square[]> winScenarios;
 	
 	protected boolean isOver;
-	private Player lastPlay;
+	protected Player lastPlay;
 	
 	public Game(Board board) {
 		
@@ -22,7 +22,7 @@ public class Game {
 		this.winScenarios.add(new Board.Square[]{Board.Square.ONE, Board.Square.FIVE, Board.Square.NINE});
 		this.winScenarios.add(new Board.Square[]{Board.Square.THREE, Board.Square.FIVE, Board.Square.SEVEN});
 		
-		board.initBoard();
+		this.board = board;
 	}
 	
 	public void reset() {
@@ -31,12 +31,10 @@ public class Game {
 	}
 	
 	public boolean play(Board.Square square, Player player) 
-	//throws Exception
 	{
 		// the game must not be over and it must be our turn and the space we want to play must not already be used
 		if(this.isOver() || !this.isMyTurn(player) || !this.playPossible(square) || square == null || player == null) {
 			return false;
-			//throw new Exception("Play not possible");
 		}
 		
 		 // if play is possible then make set X or O on board and return true
@@ -70,13 +68,13 @@ public class Game {
 
 	public boolean isOver() {
 		
-		if(board.isFull() || this.isWon()) {
-			this.isOver = true;
+		if(board.isFull() || isWon()) {
+			isOver = true;
 		} else {
-			this.isOver = false;
+			isOver = false;
 		}
 		
-		return this.isOver;
+		return isOver;
 	}
 
 	protected boolean isWon() {
@@ -86,7 +84,7 @@ public class Game {
 			int i = 0;
 			Player player = null;
 
-			for (Board.Square square : combination) {				
+			for (Board.Square square : combination) {
 				
 				player = board.getPlayerOnSquare(square);
 				

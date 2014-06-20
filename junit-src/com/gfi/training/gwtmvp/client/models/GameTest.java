@@ -2,6 +2,8 @@ package com.gfi.training.gwtmvp.client.models;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,16 +15,26 @@ import com.googlecode.gwt.test.GwtTestWithMockito;
 @GwtModule("com.gfi.training.gwtmvp.mvp")
 public class GameTest extends GwtTestWithMockito {
 	
-	@Mock Board board;
-	
 	private Game testSubject;
-
+	private Board board;
+	
+	@Mock private Board mockBoard;
+	
 	@Before
 	public void setUp() throws Exception {
 		
+		board = new Board();
 		testSubject = new Game(board);
 	}
-
+	
+	@Test
+	public void testIfWeAreCheckingForGameEndConditions() {
+		
+		testSubject = new Game(mockBoard);
+		testSubject.isOver();
+		verify(mockBoard).isFull();
+	}
+	
 	@Test
 	public void testIsGameOverWhenBoardIsEmpty() {
 		
@@ -39,14 +51,16 @@ public class GameTest extends GwtTestWithMockito {
 	
 	@Test
 	public void testIsGameOverWhenBoardIsFull() {
-		Player player = Player.CROSS;
 		
-		for(Board.Square i: Board.Square.values()){
-		    
-			testSubject.play(i, player);
-			
-			player = (player == Player.CROSS ? Player.NAUGHT : Player.CROSS);
-		}
+		testSubject.play(Board.Square.ONE, Player.CROSS);
+		testSubject.play(Board.Square.TWO, Player.NAUGHT);
+		testSubject.play(Board.Square.THREE, Player.CROSS);
+		testSubject.play(Board.Square.FOUR, Player.NAUGHT);
+		testSubject.play(Board.Square.FIVE, Player.CROSS);
+		testSubject.play(Board.Square.SIX, Player.NAUGHT);
+		testSubject.play(Board.Square.SEVEN, Player.CROSS);
+		testSubject.play(Board.Square.EIGHT, Player.NAUGHT);
+		testSubject.play(Board.Square.NINE, Player.CROSS);
 		
 		assertTrue(testSubject.isOver());
 	}
@@ -133,8 +147,6 @@ public class GameTest extends GwtTestWithMockito {
 	public void testMakePlayWhenSpaceEmpty() {
 		boolean moveMade = this.testSubject.play(Board.Square.ONE, Player.CROSS);
 		assertTrue(moveMade);
-		
-		//assertEquals(Player.CROSS, ((Game) this.game).getValueOfCell(Board.Square.ONE));
     }
 	
 	@Test

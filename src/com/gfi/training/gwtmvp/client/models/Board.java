@@ -15,7 +15,7 @@ public class Board {
 		data = new HashMap<Board.Square, Player>();
 	}
 	
-	protected boolean isFull() {
+	public boolean isFull() {
 		
 		if(data.size() == 9) {
 			return true;
@@ -29,9 +29,9 @@ public class Board {
 	}
 
 	public Player getPlayerOnSquare(Board.Square square) {
-		
+
 		Player value = data.get(square);
-		
+
 		if (value != null) {
 			return value;
 		} else {
