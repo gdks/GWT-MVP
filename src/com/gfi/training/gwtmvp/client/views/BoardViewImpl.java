@@ -19,8 +19,18 @@ public class BoardViewImpl extends Composite implements BoardView {
 	
 	private Presenter presenter;
 	
-	@UiField Button button;
-	@UiField Label name;
+	@UiField Button reset;
+	@UiField Label toPlay;
+	
+	@UiField Button btnOne;
+	@UiField Button btnTwo;
+	@UiField Button btnThree;
+	@UiField Button btnFour;
+	@UiField Button btnFive;
+	@UiField Button btnSix;
+	@UiField Button btnSeven;
+	@UiField Button btnEight;
+	@UiField Button btnNine;
 	
 	public BoardViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -28,10 +38,10 @@ public class BoardViewImpl extends Composite implements BoardView {
 	
 	public BoardViewImpl(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
-		button.setText(firstName);
+		toPlay.setText(firstName);
 	}
 
-	@UiHandler(value="button")
+	@UiHandler(value="reset")
 	void onClickFullname(ClickEvent e) {
 		if(presenter != null) {
 			presenter.goTo(new BoardPlace("John Smith"));
@@ -40,12 +50,12 @@ public class BoardViewImpl extends Composite implements BoardView {
 	
 	@Override
 	public void clear() {
-		this.name.setText("");
+		this.toPlay.setText("");
 	}
 
 	@Override
 	public void setName(String name) {
-		this.name.setText(name);
+		this.toPlay.setText(name);
 	}
 
 	@Override

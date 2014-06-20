@@ -23,20 +23,20 @@ public class BoardViewImplTest extends GwtTestWithMockito {
 	@Before
 	public void setUp() throws Exception {
 		testSubject = new BoardViewImpl();
-		testSubject.name = label;
+		testSubject.toPlay = label;
 		testSubject.setPresenter(presenter);
 	}
 
 	@Test
 	public void testClear() {
 		testSubject.clear();
-		verify(testSubject.name).setText("");
+		verify(testSubject.toPlay).setText("");
 	}
 	
 	@Test
 	public void testSettingAName() {
 		testSubject.setName("Gavin Stewart");
-		verify(testSubject.name).setText("Gavin Stewart");
+		verify(testSubject.toPlay).setText("Gavin Stewart");
 	}
 
 	@Override
