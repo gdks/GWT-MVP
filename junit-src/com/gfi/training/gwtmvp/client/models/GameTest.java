@@ -2,7 +2,7 @@ package com.gfi.training.gwtmvp.client.models;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.when;
 
 import org.junit.Before;
@@ -28,11 +28,35 @@ public class GameTest extends GwtTestWithMockito {
 	}
 	
 	@Test
-	public void testIfWeAreCheckingForGameEndConditions() {
+	public void testIfGameEndsWhenBoardIsFull() {
 		
 		testSubject = new Game(mockBoard);
-		testSubject.isOver();
-		verify(mockBoard).isFull();
+		when(mockBoard.isFull()).thenReturn(true);
+		assertTrue(testSubject.isOver());
+	}
+
+	@Test
+	public void testIfGameEndsWhenBoardIsNotFullAndPlayerHasWon() {
+		
+		testSubject = new Game(mockBoard);
+		when(mockBoard.isFull()).thenReturn(false);
+		
+		when(mockBoard.getPlayerOnSquare(Board.Square.ONE)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.TWO)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.THREE)).thenReturn(Player.CROSS);
+		
+		assertTrue(testSubject.isOver());
+	}
+	
+	@Test
+	public void testIfGameEndsWhenBoardIsNotFullAndPlayerHasNotWon() {
+		
+		testSubject = new Game(mockBoard);
+		when(mockBoard.isFull()).thenReturn(false);
+		
+		when(mockBoard.getPlayerOnSquare(isA(Board.Square.class))).thenReturn(null);
+		
+		assertFalse(testSubject.isOver());
 	}
 	
 	@Test
