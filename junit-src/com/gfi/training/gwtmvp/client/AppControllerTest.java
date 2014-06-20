@@ -1,6 +1,7 @@
 package com.gfi.training.gwtmvp.client;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -32,7 +33,7 @@ public class AppControllerTest extends GwtTestWithMockito {
 	
 	private Place defaultPlace = new BoardPlace("Gavin Stewart");
 	
-	private AppController game;
+	private AppController testSubject;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -44,24 +45,24 @@ public class AppControllerTest extends GwtTestWithMockito {
 		when(clientFactory.getActivityManager()).thenReturn(activityManager);
 		when(clientFactory.getPlaceHistoryHandler()).thenReturn(placeHistoryHandler);
 		
-		this.game = new AppController(defaultPlace, board, clientFactory);
+		testSubject = new AppController(defaultPlace, board, clientFactory);
 	}
 	
 	@Test
-	public void testStartGame() {
-		assertEquals(board, this.game.start());
+	public void testStartGameReturnsAPanel() {
+		assertThat(testSubject.start(), instanceOf(SimplePanel.class));
 	}
 	
 	@Test
-	public void testGameSetsBoard() {
-		board = (SimplePanel) this.game.start();
+	public void testGameSetsBoardAsView() {
+		board = (SimplePanel) testSubject.start();
 		verify(activityManager).setDisplay(board);
 	}
 	
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testHistoryHandlerIsSetUp() {
-		board = (SimplePanel) this.game.start();
+		board = (SimplePanel) testSubject.start();
 		verify(placeHistoryHandler).register(placeController, eventBus, defaultPlace);
 	}
 }

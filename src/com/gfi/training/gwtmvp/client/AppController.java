@@ -24,17 +24,21 @@ public class AppController {
 	@SuppressWarnings("deprecation")
 	public Panel start() {
 		// EventBus is a GWT SimpleEventBus created within ClientFactory
-		EventBus eventBus = this.clientFactory.getEventBus();
+		EventBus eventBus = clientFactory.getEventBus();
 		
 		// PlaceController is a GWT PlaceController created within ClientFactory but PlaceController is deprecated
-		PlaceController placeController = this.clientFactory.getPlaceController();
+		PlaceController placeController = clientFactory.getPlaceController();
 		
-		activityManager = this.clientFactory.getActivityManager();
-		activityManager.setDisplay(this.board);
+		// A way to map each Place to some Activity and used to automatically route app to an Activity
+		activityManager = clientFactory.getActivityManager();
+		activityManager.setDisplay(board);
 		
-		PlaceHistoryHandler historyHandler = this.clientFactory.getPlaceHistoryHandler();
-		historyHandler.register(placeController, eventBus, this.defaultPlace);
+		// Link between PlaceTokenizers and GWT's history mechanism
+		PlaceHistoryHandler historyHandler = clientFactory.getPlaceHistoryHandler();
+		// Go to the place represented on URL else default place
+		historyHandler.register(placeController, eventBus, defaultPlace);
+		historyHandler.handleCurrentHistory();
 		
-		return this.board;
+		return board;
 	}
 }
