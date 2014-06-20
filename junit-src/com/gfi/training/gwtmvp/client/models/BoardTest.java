@@ -57,4 +57,9 @@ public class BoardTest {
 	public void testIfEmptySquareReturnsAPlayer() {
 		assertEquals(null, testSubject.getPlayerOnSquare(Board.Square.ONE));
 	}
+	
+	@Test
+	public void testBoardEnumsHaveValues() {
+		assertEquals(Board.Square.ONE, Board.Square.valueOf("ONE"));
+	}
 }
