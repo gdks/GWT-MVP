@@ -34,13 +34,64 @@ public class GameTest extends GwtTestWithMockito {
 		when(mockBoard.isFull()).thenReturn(true);
 		assertTrue(testSubject.isOver());
 	}
-
+	
 	@Test
-	public void testIfGameEndsWhenBoardIsNotFullAndPlayerHasWon() {
+	public void testIfGameEndsWhenBoardIsNotFullAndPlayerHasNotWon() {
+		
+		testSubject = new Game(mockBoard);
+		when(mockBoard.isFull()).thenReturn(false);
+		when(mockBoard.getPlayerOnSquare(isA(Board.Square.class))).thenReturn(null);
+		assertFalse(testSubject.isOver());
+	}
+	
+	@Test
+	public void testIfGameIsOverWhenBoardIsEmpty() {
+		
+		assertFalse(testSubject.isOver());
+	}
+	
+	@Test
+	public void testIfGameIsWonWithVerticalColumn() {
 		
 		testSubject = new Game(mockBoard);
 		when(mockBoard.isFull()).thenReturn(false);
 		
+		// Three plays that make a win scenario
+		when(mockBoard.getPlayerOnSquare(Board.Square.ONE)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.FOUR)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.SEVEN)).thenReturn(Player.CROSS);
+		
+		assertTrue(testSubject.isOver());
+	}
+	
+	@Test
+	public void testThatAPlayerCanNotPlayOutsideTheBoard() {
+		
+		boolean moveMade = testSubject.play(null, Player.CROSS);
+		assertFalse(moveMade);
+	}
+	
+	@Test
+	public void testThatOnlyAValidPlayerCanBeUsed() {
+		
+		boolean moveMade = testSubject.play(Board.Square.ONE, null);
+		assertFalse(moveMade);
+	}
+	
+	@Test
+	public void testThatAValidPlayerCanBeUsed() {
+		
+		Player cross = Player.CROSS;
+		testSubject.play(Board.Square.ONE, cross);
+	}
+	
+	@Test
+	public void testIfGameIsWonWithHorizontalRow() {
+		
+		testSubject = new Game(mockBoard);
+		when(mockBoard.isFull()).thenReturn(false);
+		
+		// Three plays that make a win scenario
 		when(mockBoard.getPlayerOnSquare(Board.Square.ONE)).thenReturn(Player.CROSS);
 		when(mockBoard.getPlayerOnSquare(Board.Square.TWO)).thenReturn(Player.CROSS);
 		when(mockBoard.getPlayerOnSquare(Board.Square.THREE)).thenReturn(Player.CROSS);
@@ -49,127 +100,22 @@ public class GameTest extends GwtTestWithMockito {
 	}
 	
 	@Test
-	public void testIfGameEndsWhenBoardIsNotFullAndPlayerHasNotWon() {
+	public void testIfGameIsWonWithDiagonal() {
 		
 		testSubject = new Game(mockBoard);
 		when(mockBoard.isFull()).thenReturn(false);
 		
-		when(mockBoard.getPlayerOnSquare(isA(Board.Square.class))).thenReturn(null);
+		when(mockBoard.getPlayerOnSquare(Board.Square.ONE)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.FIVE)).thenReturn(Player.CROSS);
+		when(mockBoard.getPlayerOnSquare(Board.Square.NINE)).thenReturn(Player.CROSS);
 		
-		assertFalse(testSubject.isOver());
-	}
-	
-	@Test
-	public void testIsGameOverWhenBoardIsEmpty() {
-		
-		assertFalse(testSubject.isOver());
-	}
-	
-	@Test
-	public void testIsGameOverWhenBoardPartiallyFilled() {
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		testSubject.play(Board.Square.ONE, Player.NAUGHT);
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		assertFalse(testSubject.isOver());
-	}
-	
-	@Test
-	public void testIsGameOverWhenBoardIsFull() {
-		
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		testSubject.play(Board.Square.TWO, Player.NAUGHT);
-		testSubject.play(Board.Square.THREE, Player.CROSS);
-		testSubject.play(Board.Square.FOUR, Player.NAUGHT);
-		testSubject.play(Board.Square.FIVE, Player.CROSS);
-		testSubject.play(Board.Square.SIX, Player.NAUGHT);
-		testSubject.play(Board.Square.SEVEN, Player.CROSS);
-		testSubject.play(Board.Square.EIGHT, Player.NAUGHT);
-		testSubject.play(Board.Square.NINE, Player.CROSS);
-		
-		assertTrue(testSubject.isOver());
-	}
-	
-	@Test
-	public void testThatAPlayerCanNotPlayOutsideTheBoard() {
-		boolean moveMade = testSubject.play(null, Player.CROSS);
-		assertFalse(moveMade);
-	}
-	
-	@Test
-	public void testThatOnlyAValidPlayerCanBeUsed() {
-		boolean moveMade = testSubject.play(Board.Square.ONE, null);
-		assertFalse(moveMade);
-	}
-	
-	@Test
-	public void testThatAValidPlayerCanBeUsed() {
-		Player cross = Player.CROSS;
-		testSubject.play(Board.Square.ONE, cross);
-	}
-	
-	@Test
-	public void testIfGameIsWonWithVerticalColumn() {
-		
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		testSubject.play(Board.Square.THREE, Player.NAUGHT);
-		testSubject.play(Board.Square.FOUR, Player.CROSS);
-		testSubject.play(Board.Square.EIGHT, Player.NAUGHT);
-		testSubject.play(Board.Square.SEVEN, Player.CROSS);
-		assertTrue(testSubject.isOver());
-		
-		testSubject.reset();
-		
-		testSubject.play(Board.Square.TWO, Player.CROSS);
-		testSubject.play(Board.Square.THREE, Player.NAUGHT);
-		testSubject.play(Board.Square.FIVE, Player.CROSS);
-		testSubject.play(Board.Square.NINE, Player.NAUGHT);
-		testSubject.play(Board.Square.EIGHT, Player.CROSS);
-		assertTrue(testSubject.isOver());
-	}
-	
-	@Test
-	public void testIfGameIsWonWithHorizontalRow() {
-		
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		testSubject.play(Board.Square.SIX, Player.NAUGHT);
-		testSubject.play(Board.Square.TWO, Player.CROSS);
-		testSubject.play(Board.Square.SEVEN, Player.NAUGHT);
-		testSubject.play(Board.Square.THREE, Player.CROSS);
-		assertTrue(testSubject.isOver());
-		
-		testSubject.reset();
-		
-		testSubject.play(Board.Square.SEVEN, Player.CROSS);
-		testSubject.play(Board.Square.TWO, Player.NAUGHT);
-		testSubject.play(Board.Square.EIGHT, Player.CROSS);
-		testSubject.play(Board.Square.SIX, Player.NAUGHT);
-		testSubject.play(Board.Square.NINE, Player.CROSS);
-		assertTrue(testSubject.isOver());
-	}
-	
-	@Test
-	public void testIfGameIsWonWithDiagonal() {
-		
-		testSubject.play(Board.Square.ONE, Player.CROSS);
-		testSubject.play(Board.Square.FOUR, Player.NAUGHT);
-		testSubject.play(Board.Square.FIVE, Player.CROSS);
-		testSubject.play(Board.Square.TWO, Player.NAUGHT);
-		testSubject.play(Board.Square.NINE, Player.CROSS);
-		assertTrue(testSubject.isOver());
-		
-		testSubject.reset();
-		
-		testSubject.play(Board.Square.THREE, Player.CROSS);
-		testSubject.play(Board.Square.TWO, Player.NAUGHT);
-		testSubject.play(Board.Square.FIVE, Player.CROSS);
-		testSubject.play(Board.Square.FOUR, Player.NAUGHT);
-		testSubject.play(Board.Square.SEVEN, Player.CROSS);
 		assertTrue(testSubject.isOver());
 	}
 	
 	@Test
 	public void testMakePlayWhenSpaceEmpty() {
-		boolean moveMade = this.testSubject.play(Board.Square.ONE, Player.CROSS);
+		
+		boolean moveMade = testSubject.play(Board.Square.ONE, Player.CROSS);
 		assertTrue(moveMade);
     }
 	
@@ -179,45 +125,49 @@ public class GameTest extends GwtTestWithMockito {
 		boolean moveMade;
 		
 		// we should be able to play when field is empty
-		moveMade = this.testSubject.play(Board.Square.ONE, Player.CROSS);
+		moveMade = testSubject.play(Board.Square.ONE, Player.CROSS);
 		assertTrue(moveMade);
 		
 		// we shouldn't be able to make this play because we just played the field
-		moveMade = this.testSubject.play(Board.Square.ONE, Player.NAUGHT);
+		moveMade = testSubject.play(Board.Square.ONE, Player.NAUGHT);
 		assertFalse(moveMade);
 	}
 	
 	@Test
 	public void testIfCrossesCanPlayWhenStartingNewGame() {
-		boolean moveMade = this.testSubject.play(Board.Square.ONE, Player.CROSS);
+		
+		boolean moveMade = testSubject.play(Board.Square.ONE, Player.CROSS);
 		assertTrue(moveMade);
 	}
 	
 	@Test
 	public void testIfNaughtsCanPlayWhenStartingNewGame() {
-		boolean moveMade = this.testSubject.play(Board.Square.ONE, Player.NAUGHT);
+		
+		boolean moveMade = testSubject.play(Board.Square.ONE, Player.NAUGHT);
 		assertTrue(moveMade);
 	}
 	
 	@Test
 	public void testIfNaughtsCanOnlyPlayAfterCrossesMidGame() {
+		
 		boolean moveMade;
 		
-		moveMade = this.testSubject.play(Board.Square.ONE, Player.CROSS);
+		moveMade = testSubject.play(Board.Square.ONE, Player.CROSS);
 		assertTrue(moveMade);
 		
-		moveMade = this.testSubject.play(Board.Square.TWO, Player.CROSS);
+		moveMade = testSubject.play(Board.Square.TWO, Player.CROSS);
 		assertFalse(moveMade);
 	}
 	
 	@Test
 	public void testIfCrossesCanOnlyPlayAfterNaughtsMidGame() {
+		
 		boolean moveMade;
 		
-		moveMade = this.testSubject.play(Board.Square.ONE, Player.NAUGHT);
+		moveMade = testSubject.play(Board.Square.ONE, Player.NAUGHT);
 		assertTrue(moveMade);
 		
-		moveMade = this.testSubject.play(Board.Square.TWO, Player.NAUGHT);
+		moveMade = testSubject.play(Board.Square.TWO, Player.NAUGHT);
 		assertFalse(moveMade);
 	}
 	
@@ -225,13 +175,13 @@ public class GameTest extends GwtTestWithMockito {
 	public void testIfPlayersCanAlternateTurns() {
 		boolean moveMade;
 		
-		moveMade = this.testSubject.play(Board.Square.ONE, Player.NAUGHT);
+		moveMade = testSubject.play(Board.Square.ONE, Player.NAUGHT);
 		assertTrue(moveMade);
 		
-		moveMade = this.testSubject.play(Board.Square.TWO, Player.CROSS);
+		moveMade = testSubject.play(Board.Square.TWO, Player.CROSS);
 		assertTrue(moveMade);
 		
-		moveMade = this.testSubject.play(Board.Square.THREE, Player.NAUGHT);
+		moveMade = testSubject.play(Board.Square.THREE, Player.NAUGHT);
 		assertTrue(moveMade);
 	}
 }
