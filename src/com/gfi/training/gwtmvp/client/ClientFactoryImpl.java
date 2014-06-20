@@ -15,38 +15,42 @@ public class ClientFactoryImpl implements ClientFactory {
     @SuppressWarnings("deprecation")
 	private final PlaceController placeController = new PlaceController(eventBus);
     private final BoardView boardView = new BoardViewImpl();
-    ActivityMapper activityMapper = new AppActivityMapper(this);
+    private final ActivityMapper activityMapper = new AppActivityMapper(this);
 
     @Override
     public EventBus getEventBus() {
-        return this.eventBus;
+        return eventBus;
     }
 
 	@Override
 	public PlaceController getPlaceController() {
-		return this.placeController;
+		return placeController;
 	}
 	
 	@Override
 	public BoardView getBoardView() {
-		return this.boardView;
+		return boardView;
 	}
 
 	@Override
 	public ActivityMapper getActivityMapper() {
-		return this.activityMapper;
+		return activityMapper;
 	}
 
 	@Override
 	public ActivityManager getActivityManager() {
-		this.getActivityMapper();
-		ActivityManager activityManager = new ActivityManager(this.activityMapper, this.eventBus);
+		getActivityMapper();
+		
+		// Start ActivityManager for the main widget with our ActivityMapper
+		ActivityManager activityManager = new ActivityManager(activityMapper, eventBus);
 		return activityManager;
 	}
 	
 	@Override
 	public PlaceHistoryHandler getPlaceHistoryHandler() {
 		AppPlaceHistoryMapper historyMapper = GWT.create(AppPlaceHistoryMapper.class);
+		
+		// Start PlaceHistoryHandler with our PlaceHistoryMapper
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 		return historyHandler;
 	}
