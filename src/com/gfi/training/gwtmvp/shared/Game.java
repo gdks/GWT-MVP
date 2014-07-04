@@ -1,4 +1,4 @@
-package com.gfi.training.gwtmvp.client.models;
+package com.gfi.training.gwtmvp.shared;
 
 import java.util.ArrayList;
 

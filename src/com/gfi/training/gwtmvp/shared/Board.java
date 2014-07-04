@@ -1,35 +1,52 @@
 package com.gfi.training.gwtmvp.shared;
 
+import com.google.gwt.dev.util.collect.HashMap;
+
 public class Board {
-	protected String firstname;
-	protected String lastname;
+	
+	private HashMap<Board.Square, Player> data;
 	
 	public Board() {
-		this("Gavin", "Stewart");
+		initBoard();
 	}
 	
-	public Board(String firstname, String lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
+	public void initBoard() {
+		
+		data = new HashMap<Board.Square, Player>();
 	}
 	
-	public String getFullName() {
-		return this.getFirstname() + " " + this.getLastname();
+	public boolean isFull() {
+		
+		if(data.size() == 9) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public void put(Board.Square square, Player player) {
+		data.put(square, player);
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
+	public Player getPlayerOnSquare(Board.Square square) {
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+		Player value = data.get(square);
 
-	public String getLastname() {
-		return lastname;
+		if (value != null) {
+			return value;
+		} else {
+			return null;
+		}
 	}
+	
+	enum Square {
+		ONE(1),TWO(2),THREE(3),FOUR(4),FIVE(5),SIX(6),SEVEN(7),EIGHT(8),NINE(9);
+		
+		@SuppressWarnings("unused")
+		private int value;
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	    private Square(int value) {
+	    	this.value = value;
+	    }
 	}
 }
