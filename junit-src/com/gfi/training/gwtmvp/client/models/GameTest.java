@@ -9,6 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import com.gfi.training.gwtmvp.shared.Board;
+import com.gfi.training.gwtmvp.shared.Game;
+import com.gfi.training.gwtmvp.shared.Player;
 import com.googlecode.gwt.test.GwtModule;
 import com.googlecode.gwt.test.GwtTestWithMockito;
 

@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.gfi.training.gwtmvp.shared.Player;
+
 public class PlayerTest {
 	
 	@Test

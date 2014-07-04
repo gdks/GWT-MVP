@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.gfi.training.gwtmvp.shared.Board;
+import com.gfi.training.gwtmvp.shared.Player;
+
 public class BoardTest {
 	
 	private Board testSubject;
