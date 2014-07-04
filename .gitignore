@@ -54,6 +54,7 @@ Desktop.ini
 target
 .gwt/
 gwt-unitCache/
+
 war/
  
 # Locally stored "Eclipse launch configurations"
@@ -64,4 +65,3 @@ war/
  
 # PDT-specific
 .buildpath
-
