@@ -15,7 +15,7 @@ public class MyApp implements EntryPoint {
 		
 		// Initialise AppController
 		game = new AppController(
-				new BoardPlace("Gavin Stewart"), // default place
+				new BoardPlace(), // default place
 				new SimplePanel(), // main panel
 				new ClientFactoryImpl() // factory to produce all objects
 				);

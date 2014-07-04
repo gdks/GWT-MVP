@@ -6,11 +6,11 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 public class BoardPlace extends Place {
 	private String token;
 	
-	public BoardPlace(String token) { 
-		this.token = token; 
+    public BoardPlace() {
+		
 	}
-	
-    public String getToken() { 
+
+	public String getToken() { 
     	return this.token;
     }
 
@@ -22,7 +22,7 @@ public class BoardPlace extends Place {
 
          @Override
          public BoardPlace getPlace(String token) {
-        	 return new BoardPlace(token);
+        	 return new BoardPlace();
          }
     }
 }

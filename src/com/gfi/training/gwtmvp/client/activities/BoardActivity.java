@@ -31,8 +31,7 @@ public class BoardActivity extends AbstractActivity implements BoardView.Present
 	 * @param token
 	 */
 	public void getBoard(String token) {
-		String[] parts = token.split(" ");
-		this.board = new Board(parts[0], parts[parts.length-1]);
+		this.board = new Board();
 	}
 	
 	/**
@@ -41,7 +40,6 @@ public class BoardActivity extends AbstractActivity implements BoardView.Present
 	@Override
 	public void start(AcceptsOneWidget containerWidget, EventBus eventBus) {
 		BoardView boardView = this.clientFactory.getBoardView();
-		boardView.setName(this.board.getFullName());
 		boardView.setPresenter(this);
 		containerWidget.setWidget(boardView.asWidget());
 	}

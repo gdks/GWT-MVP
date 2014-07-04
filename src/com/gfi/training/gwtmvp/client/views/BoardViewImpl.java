@@ -41,7 +41,7 @@ public class BoardViewImpl extends Composite implements BoardView {
 	@UiHandler(value="reset")
 	void onClickFullname(ClickEvent e) {
 		if(presenter != null) {
-			presenter.goTo(new BoardPlace("John Smith"));
+			presenter.goTo(new BoardPlace());
 		}
 	}
 	

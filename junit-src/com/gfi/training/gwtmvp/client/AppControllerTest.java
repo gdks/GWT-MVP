@@ -31,7 +31,7 @@ public class AppControllerTest extends GwtTestWithMockito {
 	@Mock private PlaceHistoryHandler placeHistoryHandler;
 	@Mock private PlaceController placeController;
 	
-	private Place defaultPlace = new BoardPlace("Gavin Stewart");
+	private Place defaultPlace = new BoardPlace();
 	
 	private AppController testSubject;
 	
